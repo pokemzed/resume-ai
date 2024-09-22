@@ -1,0 +1,43 @@
+.wrapper {
+    position: relative;
+}
+.wrapper > input {
+    width: 100%;
+    min-width: 800px;
+    padding: 1.5rem;
+
+    border: 1px solid var(--background-secondary);
+    border-radius: var(--border-radius);
+    background: inherit;
+    max-height: 64px;
+
+    font-size: 16px;
+    color: var(--text);
+    letter-spacing: 0.15px;
+
+    outline: none;
+    transition: var(--transition);
+}
+.wrapper > input::placeholder {
+    color: var(--text-secondary);
+}
+.wrapper > input:hover {
+    border-color: var(--border-color);
+}
+.wrapper > input:focus {
+    border-color: var(--border-color);
+}
+.wrapper > button {
+    position: absolute;
+    right: 0.7rem;
+    top: 0.7rem;
+    z-index: 5;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 42px !important;
+    height: 42px !important;
+    min-width: 0;
+    padding: 0.5rem;
+}

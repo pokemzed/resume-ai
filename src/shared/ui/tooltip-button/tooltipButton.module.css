@@ -1,0 +1,10 @@
+.button {
+    border-color: var(--background-secondary) !important;
+    padding: 0.5rem 1rem !important;
+    border-radius: 2rem !important;
+    max-height: 42px;
+    color: var(--text) !important;
+}
+.button:hover {
+    border-color: var(--border-color) !important;
+}
