@@ -1,14 +1,26 @@
+'use client';
 import styles from './chat.module.css';
 import { ChatField } from '@/features/chat-field';
+import Messages from '@/entities/messages';
+import { LeaveChat } from '@/features/leave-chat';
+import { ClearHistory } from '@/features/clear-history';
+import { QuestionsButton } from '@/features/questions-button';
 import { useState } from 'react';
-import { Messages } from '@/features/messages';
 
 export const Chat = () => {
-    const [content, setContent] = useState<boolean>(false);
+    const [loadingMessage, setLoadingMessage] = useState<boolean>(false);
+
     return (
         <section className={styles.chat}>
-            {content && <Messages />}
-            <ChatField content={content} />
+            <header className={styles.header}>
+                <LeaveChat />
+                <div className={styles.actions}>
+                    <QuestionsButton />
+                    <ClearHistory />
+                </div>
+            </header>
+            <Messages />
+            <ChatField />
         </section>
     );
 };

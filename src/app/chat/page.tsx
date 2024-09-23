@@ -1,5 +1,4 @@
-import styles from './chat.module.css';
-const Chat = () => {
-    return <div className={styles.chat}>chat</div>;
-};
+import { Chat as ChatWidget } from '@/widgets/chat';
+
+const Chat = () => <ChatWidget />;
 export default Chat;

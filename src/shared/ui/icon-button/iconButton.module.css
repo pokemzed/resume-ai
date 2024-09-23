@@ -1,0 +1,26 @@
+.button {
+    border-color: var(--background-secondary) !important;
+    padding: 0.5rem 1rem !important;
+    border-radius: 2rem !important;
+    max-height: 42px;
+    color: var(--text) !important;
+
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+.button > span {
+    font-size: 14px;
+    font-weight: 400;
+}
+.button:hover {
+    border-color: var(--border-color) !important;
+}
+
+/*buttonType*/
+/*.error{*/
+/*    border-color: #BE0000 !important;*/
+/*}*/
+.error:hover {
+    border-color: #880000 !important;
+}

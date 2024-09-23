@@ -21,13 +21,17 @@
     color: var(--text-secondary);
 }
 
-/*content (chat)*/
-.content {
-    padding: 2rem 0;
-    height: 100vh;
-    justify-content: flex-end;
-    transition: 0.5s;
+/*redirect (chat)*/
+.redirect {
+    animation: hidden 0.35s;
 }
-.content .text {
-    display: none;
+
+@keyframes hidden {
+    0% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+        display: none;
+    }
 }
