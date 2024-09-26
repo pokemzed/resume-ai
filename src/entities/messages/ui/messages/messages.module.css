@@ -3,6 +3,11 @@
     height: 100%;
     margin: 1.5rem 0;
     overflow-y: auto;
+    scroll-behavior: smooth;
+
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
 }
 
 /* Chrome, Edge and Safari */

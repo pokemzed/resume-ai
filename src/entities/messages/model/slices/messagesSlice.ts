@@ -1,4 +1,4 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { IMessages } from '@/entities/messages';
 
 const initialState: IMessages = {
@@ -8,7 +8,21 @@ const initialState: IMessages = {
 const messagesSlice = createSlice({
     name: 'messages',
     initialState,
-    reducers: {},
+    reducers: {
+        sendMessage: (
+            state,
+            action: PayloadAction<{ role: 'user'; content: string }>,
+        ) => {
+            if (state.messages === null) {
+                state.messages = [action.payload];
+                return;
+            }
+            state.messages.push(action.payload);
+        },
+        clearHistory: (state) => {
+            state.messages = null;
+        },
+    },
 });
 
 export const {

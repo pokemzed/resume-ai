@@ -23,15 +23,6 @@
 
 /*redirect (chat)*/
 .redirect {
-    animation: hidden 0.35s;
-}
-
-@keyframes hidden {
-    0% {
-        opacity: 1;
-    }
-    100% {
-        opacity: 0;
-        display: none;
-    }
+    opacity: 0;
+    transition: 0.35s;
 }

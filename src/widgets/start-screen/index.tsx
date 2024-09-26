@@ -10,7 +10,7 @@ export const StartScreen = () => {
 
     useEffect(() => {
         if (visible) {
-            setTimeout(() => router.push('/chat'), 200);
+            setTimeout(() => router.push('/chat'), 250);
         }
     }, [router, visible]);
 

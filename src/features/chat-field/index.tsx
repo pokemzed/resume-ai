@@ -3,7 +3,9 @@ import styles from './chatField.module.css';
 import { TextField } from '@/shared/ui/text-field';
 import { TooltipButton } from '@/shared/ui/tooltip-button';
 import { useState } from 'react';
-import { useSendMessageMutation } from '@/app/api';
+// import { useSendMessageMutation } from '@/app/api';
+import { useAppDispatch } from '@/app/providers/store';
+import { messagesActions } from '@/entities/messages';
 
 export const ChatField = ({
     tooltips = false,
@@ -12,8 +14,9 @@ export const ChatField = ({
     tooltips?: boolean;
     otherFunction?: () => void;
 }) => {
+    const dispatch = useAppDispatch();
     const [fieldValue, setFieldValue] = useState<string>('');
-    const [sendMessages] = useSendMessageMutation();
+    // const [sendMessages] = useSendMessageMutation();
 
     const onChangeFiledValue = (e: React.ChangeEvent<HTMLInputElement>) =>
         setFieldValue(e.target.value);
@@ -22,13 +25,18 @@ export const ChatField = ({
 
     const sendMessage = async () => {
         if (fieldValue) {
-            sendMessages([{ role: 'user', content: fieldValue }])
-                .unwrap()
-                .then((res) => console.log(res));
+            dispatch(
+                messagesActions.sendMessage({
+                    role: 'user',
+                    content: fieldValue,
+                }),
+            );
             if (otherFunction) {
                 otherFunction();
             }
+            setFieldValue('');
         }
+        return;
     };
 
     return (
