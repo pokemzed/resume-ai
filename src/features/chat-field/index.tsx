@@ -4,8 +4,14 @@ import { TextField } from '@/shared/ui/text-field';
 import { TooltipButton } from '@/shared/ui/tooltip-button';
 import { useState } from 'react';
 // import { useSendMessageMutation } from '@/app/api';
-import { useAppDispatch } from '@/app/providers/store';
-import { messagesActions } from '@/entities/messages';
+import { useAppDispatch, useAppSelector } from '@/app/providers/store';
+import {
+    getMessagesReducer,
+    IMessage,
+    messagesActions,
+} from '@/entities/messages';
+import { useSendMessageMutation } from '@/app/api';
+import { LinearProgress } from '@mui/material';
 
 export const ChatField = ({
     tooltips = false,
@@ -16,7 +22,8 @@ export const ChatField = ({
 }) => {
     const dispatch = useAppDispatch();
     const [fieldValue, setFieldValue] = useState<string>('');
-    // const [sendMessages] = useSendMessageMutation();
+    const messages = useAppSelector(getMessagesReducer);
+    const [sendMessageRequest] = useSendMessageMutation();
 
     const onChangeFiledValue = (e: React.ChangeEvent<HTMLInputElement>) =>
         setFieldValue(e.target.value);
@@ -25,12 +32,31 @@ export const ChatField = ({
 
     const sendMessage = async () => {
         if (fieldValue) {
-            dispatch(
-                messagesActions.sendMessage({
-                    role: 'user',
-                    content: fieldValue,
-                }),
-            );
+            const fieldObject: IMessage = {
+                role: 'user',
+                content: fieldValue,
+            };
+
+            // state actions
+            dispatch(messagesActions.sendMessage(fieldObject));
+            dispatch(messagesActions.setLoading(true));
+
+            // request
+            sendMessageRequest(
+                messages ? [...messages, fieldObject] : [fieldObject],
+            )
+                .unwrap()
+                .then((res) => {
+                    dispatch(
+                        messagesActions.sendMessage({
+                            role: 'assistant',
+                            content: res?.choices?.[0].message.content,
+                        }),
+                    );
+                    dispatch(messagesActions.setLoading(false));
+                })
+                .catch((err) => console.log(err));
+
             if (otherFunction) {
                 otherFunction();
             }

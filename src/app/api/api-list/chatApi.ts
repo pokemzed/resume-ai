@@ -14,7 +14,7 @@ export const chatApi = createApi({
         },
     }),
     endpoints: (build) => ({
-        sendMessage: build.mutation<string, IMessage[]>({
+        sendMessage: build.mutation<any, IMessage[]>({
             query: (messages) => ({
                 url: '',
                 method: 'POST',

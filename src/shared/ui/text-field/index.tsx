@@ -1,6 +1,9 @@
 import styles from './textField.module.css';
-import { Button, ButtonProps } from '@mui/material';
+import { ButtonProps } from '@mui/material';
+import LoadingButton from '@mui/lab/LoadingButton';
 import ArrowIcon from '@/shared/assets/arrow.svg';
+import { useAppSelector } from '@/app/providers/store';
+import { getLoadingMessagesReducer } from '@/entities/messages/model/reducers';
 
 interface IProps extends ButtonProps {
     fieldValue: string;
@@ -14,6 +17,8 @@ export const TextField = ({
     textFieldPlaceholder,
     ...props
 }: IProps) => {
+    const isLoading = useAppSelector(getLoadingMessagesReducer);
+
     return (
         <section className={styles.wrapper}>
             <input
@@ -21,13 +26,14 @@ export const TextField = ({
                 value={fieldValue}
                 onChange={onChangeFieldValue}
             />
-            <Button
+            <LoadingButton
+                loading={isLoading}
                 variant={props.variant || 'contained'}
                 className={`${styles.button} ${props.className}`}
                 {...props}
             >
                 <ArrowIcon />
-            </Button>
+            </LoadingButton>
         </section>
     );
 };

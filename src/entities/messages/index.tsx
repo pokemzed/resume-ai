@@ -7,3 +7,4 @@ export {
     messagesReducer,
     messagesSliceName,
 } from './model/slices/messagesSlice';
+export { getMessagesReducer } from './model/reducers';

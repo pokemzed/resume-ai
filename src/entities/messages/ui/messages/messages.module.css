@@ -7,7 +7,11 @@
 
     display: flex;
     flex-direction: column;
-    gap: 0.5rem;
+    gap: 1rem;
+}
+.clearHistory {
+    text-align: center;
+    color: var(--text-secondary);
 }
 
 /* Chrome, Edge and Safari */

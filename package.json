@@ -6,7 +6,7 @@
         "dev": "next dev",
         "build": "next build",
         "start": "next start",
-        "lint": "next lint",
+        "lint": "eslint .",
         "prettier": "prettier . --check",
         "prettier:write": "prettier . --write"
     },
@@ -14,6 +14,7 @@
         "@emotion/cache": "^11.13.1",
         "@emotion/react": "^11.13.3",
         "@emotion/styled": "^11.13.0",
+        "@mui/lab": "6.0.0-beta.10",
         "@mui/material": "^6.1.1",
         "@mui/material-nextjs": "^6.1.1",
         "@reduxjs/toolkit": "^2.2.7",

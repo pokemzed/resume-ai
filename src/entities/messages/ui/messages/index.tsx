@@ -3,12 +3,15 @@ import styles from './messages.module.css';
 import { UserMessage } from '@/entities/messages/ui/user-message';
 import { AiMessage } from '@/entities/messages/ui/ai-message';
 import { useAppSelector } from '@/app/providers/store';
-import { getMessagesReducer } from '../../model/reducers';
+import { getMessagesReducer } from '@/entities/messages';
 import { useEffect, useRef } from 'react';
+import { getLoadingMessagesReducer } from '@/entities/messages/model/reducers';
+import { Loader } from '@/shared/ui/loader';
 
 export const Messages = () => {
     const ref = useRef<HTMLDivElement | null>(null);
     const messages = useAppSelector(getMessagesReducer);
+    const isLoading = useAppSelector(getLoadingMessagesReducer);
 
     useEffect(() => {
         if (ref.current) {
@@ -18,7 +21,13 @@ export const Messages = () => {
 
     // TODO: replace
     if (messages === null)
-        return <section className={styles.wrapper}>zalupa</section>;
+        return (
+            <section className={styles.wrapper}>
+                <p className={styles.clearHistory}>
+                    Сообщений пока нет. Начните диалог прямо сейчас
+                </p>
+            </section>
+        );
 
     return (
         <section ref={ref} className={styles.wrapper}>
@@ -30,6 +39,7 @@ export const Messages = () => {
                 if (message.role === 'assistant')
                     return <AiMessage key={index} message={message.content} />;
             })}
+            {isLoading && <AiMessage loading message={<Loader />} />}
         </section>
     );
 };
