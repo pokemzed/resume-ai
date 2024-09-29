@@ -1,3 +1,4 @@
+'use client';
 import { IconButton } from '@/shared/ui/icon-button';
 import BackArrowIcon from '@/shared/assets/arrow-back.svg';
 import { useAppDispatch } from '@/app/providers/store';
@@ -12,6 +13,7 @@ export const LeaveChat = () => {
         handleClearHistory();
         router.push('/');
     };
+    // TODO: Confirm modal
     return (
         <IconButton onClick={handleLeave}>
             <BackArrowIcon />

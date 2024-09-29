@@ -9,12 +9,14 @@ interface IProps extends ButtonProps {
     fieldValue: string;
     onChangeFieldValue: (e: React.ChangeEvent<HTMLInputElement>) => void;
     textFieldPlaceholder?: string;
+    onKeyHandler?: (e: React.KeyboardEvent<HTMLInputElement>) => void;
 }
 
 export const TextField = ({
     fieldValue,
     onChangeFieldValue,
     textFieldPlaceholder,
+    onKeyHandler,
     ...props
 }: IProps) => {
     const isLoading = useAppSelector(getLoadingMessagesReducer);
@@ -25,6 +27,7 @@ export const TextField = ({
                 placeholder={textFieldPlaceholder || 'Введите сообщение'}
                 value={fieldValue}
                 onChange={onChangeFieldValue}
+                onKeyDown={onKeyHandler}
             />
             <LoadingButton
                 loading={isLoading}

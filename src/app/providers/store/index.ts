@@ -20,7 +20,8 @@ export const store = configureStore<IStateSchema>({
         messages: messagesPersistedReducer,
         [chatApi.reducerPath]: chatApi.reducer,
     },
-    // @ts-ignore
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-expect-error
     middleware: (getDefaultMiddleware) =>
         getDefaultMiddleware({
             serializableCheck: false, // Disable serializableCheck for redux-persist

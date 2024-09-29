@@ -1,5 +1,6 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 import { IMessage } from '@/entities/messages';
+import { MessageResponse } from '@/entities/messages/model/types';
 
 export const chatApi = createApi({
     reducerPath: 'chat-api',
@@ -14,7 +15,7 @@ export const chatApi = createApi({
         },
     }),
     endpoints: (build) => ({
-        sendMessage: build.mutation<any, IMessage[]>({
+        sendMessage: build.mutation<MessageResponse, IMessage[]>({
             query: (messages) => ({
                 url: '',
                 method: 'POST',

@@ -19,7 +19,6 @@ export const Messages = () => {
         }
     }, [messages]);
 
-    // TODO: replace
     if (messages === null)
         return (
             <section className={styles.wrapper}>

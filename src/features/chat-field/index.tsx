@@ -3,7 +3,6 @@ import styles from './chatField.module.css';
 import { TextField } from '@/shared/ui/text-field';
 import { TooltipButton } from '@/shared/ui/tooltip-button';
 import { useState } from 'react';
-// import { useSendMessageMutation } from '@/app/api';
 import { useAppDispatch, useAppSelector } from '@/app/providers/store';
 import {
     getMessagesReducer,
@@ -11,7 +10,6 @@ import {
     messagesActions,
 } from '@/entities/messages';
 import { useSendMessageMutation } from '@/app/api';
-import { LinearProgress } from '@mui/material';
 
 export const ChatField = ({
     tooltips = false,
@@ -29,6 +27,14 @@ export const ChatField = ({
         setFieldValue(e.target.value);
 
     const onSelectTooltip = (value: string) => setFieldValue(value);
+
+    const onKeySendMessage = async (
+        e: React.KeyboardEvent<HTMLInputElement>,
+    ) => {
+        if (e.key === 'Enter') {
+            await sendMessage();
+        }
+    };
 
     const sendMessage = async () => {
         if (fieldValue) {
@@ -50,7 +56,7 @@ export const ChatField = ({
                     dispatch(
                         messagesActions.sendMessage({
                             role: 'assistant',
-                            content: res?.choices?.[0].message.content,
+                            content: res?.choices[0].message.content,
                         }),
                     );
                     dispatch(messagesActions.setLoading(false));
@@ -71,6 +77,7 @@ export const ChatField = ({
                 fieldValue={fieldValue}
                 onChangeFieldValue={onChangeFiledValue}
                 onClick={sendMessage}
+                onKeyHandler={onKeySendMessage}
             />
             {tooltips && (
                 <div className={styles.tooltips}>
