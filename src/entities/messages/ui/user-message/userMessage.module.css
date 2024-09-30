@@ -20,4 +20,5 @@
     color: var(--text);
     font-size: 16px;
     font-weight: 400;
+    word-break: break-word;
 }

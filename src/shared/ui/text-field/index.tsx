@@ -2,14 +2,13 @@ import styles from './textField.module.css';
 import { ButtonProps } from '@mui/material';
 import LoadingButton from '@mui/lab/LoadingButton';
 import ArrowIcon from '@/shared/assets/arrow.svg';
-import { useAppSelector } from '@/app/providers/store';
-import { getLoadingMessagesReducer } from '@/entities/messages/model/reducers';
 
 interface IProps extends ButtonProps {
     fieldValue: string;
-    onChangeFieldValue: (e: React.ChangeEvent<HTMLInputElement>) => void;
+    onChangeFieldValue: (e: React.ChangeEvent<HTMLTextAreaElement>) => void;
     textFieldPlaceholder?: string;
-    onKeyHandler?: (e: React.KeyboardEvent<HTMLInputElement>) => void;
+    isLoading?: boolean;
+    onKeyHandler?: (e: React.KeyboardEvent<HTMLTextAreaElement>) => void;
 }
 
 export const TextField = ({
@@ -17,13 +16,12 @@ export const TextField = ({
     onChangeFieldValue,
     textFieldPlaceholder,
     onKeyHandler,
+    isLoading,
     ...props
 }: IProps) => {
-    const isLoading = useAppSelector(getLoadingMessagesReducer);
-
     return (
         <section className={styles.wrapper}>
-            <input
+            <textarea
                 placeholder={textFieldPlaceholder || 'Введите сообщение'}
                 value={fieldValue}
                 onChange={onChangeFieldValue}

@@ -1,0 +1,50 @@
+.wrapper {
+    position: absolute;
+    left: calc(50% - 262px);
+    width: 524px;
+    top: 35%;
+    background-color: var(--background);
+    border-radius: var(--border-radius);
+}
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    padding: 0.5rem 1rem;
+    border-bottom: 1px solid var(--background-secondary);
+}
+.header > button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 18px;
+    color: var(--text);
+}
+.header > h2 {
+    color: var(--text);
+    font-size: 18px;
+}
+
+.content {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    padding: 1rem;
+}
+.content > p {
+    color: var(--text-secondary);
+}
+.actions {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+.actions > button {
+    width: 100%;
+}
+.actions > button:last-child {
+    width: 45%;
+}

@@ -1,10 +1,11 @@
 .wrapper {
     position: relative;
 }
-.wrapper > input {
+.wrapper > textarea {
     width: 100%;
+    /*max-width: 100%;*/
     min-width: 800px;
-    padding: 1.5rem;
+    padding: 1.25rem 3rem 1.25rem 1.5rem;
 
     border: 1px solid var(--background-secondary);
     border-radius: var(--border-radius);
@@ -13,18 +14,23 @@
 
     font-size: 16px;
     color: var(--text);
+    font-family: inherit;
     letter-spacing: 0.15px;
 
     outline: none;
+    resize: none;
     transition: var(--transition);
 }
-.wrapper > input::placeholder {
+.wrapper > textarea::-webkit-scrollbar {
+    opacity: 0;
+}
+.wrapper > textarea::placeholder {
     color: var(--text-secondary);
 }
-.wrapper > input:hover {
+.wrapper > textarea:hover {
     border-color: var(--border-color);
 }
-.wrapper > input:focus {
+.wrapper > textarea:focus {
     border-color: var(--border-color);
 }
 .wrapper > button {

@@ -10,6 +10,7 @@ import {
     messagesActions,
 } from '@/entities/messages';
 import { useSendMessageMutation } from '@/app/api';
+import { getLoadingMessagesReducer } from '@/entities/messages/model/reducers';
 
 export const ChatField = ({
     tooltips = false,
@@ -21,23 +22,26 @@ export const ChatField = ({
     const dispatch = useAppDispatch();
     const [fieldValue, setFieldValue] = useState<string>('');
     const messages = useAppSelector(getMessagesReducer);
+    const isLoading = useAppSelector(getLoadingMessagesReducer);
     const [sendMessageRequest] = useSendMessageMutation();
 
-    const onChangeFiledValue = (e: React.ChangeEvent<HTMLInputElement>) =>
+    const onChangeFiledValue = (e: React.ChangeEvent<HTMLTextAreaElement>) =>
         setFieldValue(e.target.value);
 
     const onSelectTooltip = (value: string) => setFieldValue(value);
 
-    const onKeySendMessage = async (
-        e: React.KeyboardEvent<HTMLInputElement>,
-    ) => {
-        if (e.key === 'Enter') {
-            await sendMessage();
-        }
-    };
+    // const onKeySendMessage = async (
+    //     e: React.KeyboardEvent<HTMLTextAreaElement>,
+    // ) => {
+    //     if (e.key === 'Enter' && !isLoading) {
+    //         if (fieldValue.length) {
+    //             await sendMessage();
+    //         }
+    //     }
+    // };
 
     const sendMessage = async () => {
-        if (fieldValue) {
+        if (fieldValue.length) {
             const fieldObject: IMessage = {
                 role: 'user',
                 content: fieldValue,
@@ -59,9 +63,9 @@ export const ChatField = ({
                             content: res?.choices[0].message.content,
                         }),
                     );
-                    dispatch(messagesActions.setLoading(false));
                 })
-                .catch((err) => console.log(err));
+                .catch((err) => console.log(err))
+                .finally(() => dispatch(messagesActions.setLoading(false)));
 
             if (otherFunction) {
                 otherFunction();
@@ -74,10 +78,11 @@ export const ChatField = ({
     return (
         <div className={styles.wrapper}>
             <TextField
+                isLoading={isLoading}
                 fieldValue={fieldValue}
                 onChangeFieldValue={onChangeFiledValue}
                 onClick={sendMessage}
-                onKeyHandler={onKeySendMessage}
+                // onKeyHandler={onKeySendMessage}
             />
             {tooltips && (
                 <div className={styles.tooltips}>
