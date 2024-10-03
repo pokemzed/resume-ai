@@ -3,7 +3,7 @@
     left: calc(50% - 262px);
     width: 524px;
     top: 35%;
-    background-color: var(--background);
+    background-color: var(--background-secondary);
     border-radius: var(--border-radius);
 }
 .header {

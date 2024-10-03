@@ -11,6 +11,7 @@ import {
 } from '@/entities/messages';
 import { useSendMessageMutation } from '@/app/api';
 import { getLoadingMessagesReducer } from '@/entities/messages/model/reducers';
+import { SYSTEM_PROMPT } from '@/entities/messages/model/lib/prompt';
 
 export const ChatField = ({
     tooltips = false,
@@ -28,7 +29,12 @@ export const ChatField = ({
     const onChangeFiledValue = (e: React.ChangeEvent<HTMLTextAreaElement>) =>
         setFieldValue(e.target.value);
 
-    const onSelectTooltip = (value: string) => setFieldValue(value);
+    const onSelectTooltip = (value: string) => {
+        if (fieldValue.length) {
+            return setFieldValue(fieldValue + ` ${value}`);
+        }
+        setFieldValue(value);
+    };
 
     // const onKeySendMessage = async (
     //     e: React.KeyboardEvent<HTMLTextAreaElement>,
@@ -51,9 +57,15 @@ export const ChatField = ({
             dispatch(messagesActions.sendMessage(fieldObject));
             dispatch(messagesActions.setLoading(true));
 
+            if (otherFunction) {
+                otherFunction();
+            }
+
             // request
             sendMessageRequest(
-                messages ? [...messages, fieldObject] : [fieldObject],
+                messages
+                    ? [...messages, fieldObject]
+                    : [{ role: 'system', content: SYSTEM_PROMPT }, fieldObject],
             )
                 .unwrap()
                 .then((res) => {
@@ -67,9 +79,6 @@ export const ChatField = ({
                 .catch((err) => console.log(err))
                 .finally(() => dispatch(messagesActions.setLoading(false)));
 
-            if (otherFunction) {
-                otherFunction();
-            }
             setFieldValue('');
         }
         return;

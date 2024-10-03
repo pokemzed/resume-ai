@@ -7,13 +7,23 @@ export const AiMessage = ({
     message: string | React.ReactNode;
     loading?: boolean;
 }) => {
+    const formattedText =
+        typeof message === 'string' &&
+        message
+            .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
+            .replace(/---/g, '<hr />')
+            .replace(/\n/g, '<br />');
     return (
         <div className={styles.wrapper}>
             <div className={styles.icon}>
                 <AiIcon />
             </div>
             <span className={`${styles.message} ${loading && styles.loading}`}>
-                {message}
+                {loading ? (
+                    message
+                ) : (
+                    <div dangerouslySetInnerHTML={{ __html: formattedText }} />
+                )}
             </span>
         </div>
     );

@@ -1,5 +1,6 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { IMessage, IMessages } from '@/entities/messages';
+import { SYSTEM_PROMPT } from '../lib/prompt';
 
 const initialState: IMessages = {
     messages: null,
@@ -12,7 +13,10 @@ const messagesSlice = createSlice({
     reducers: {
         sendMessage: (state, action: PayloadAction<IMessage>) => {
             if (state.messages === null) {
-                state.messages = [action.payload];
+                state.messages = [
+                    { role: 'system', content: SYSTEM_PROMPT },
+                    action.payload,
+                ];
                 return;
             }
             state.messages.push(action.payload);

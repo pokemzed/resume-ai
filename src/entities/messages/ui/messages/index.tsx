@@ -14,7 +14,7 @@ export const Messages = () => {
     const isLoading = useAppSelector(getLoadingMessagesReducer);
 
     useEffect(() => {
-        if (ref.current) {
+        if (ref.current && messages?.length) {
             ref.current.scrollTo(0, ref.current.scrollHeight); // scroll to bottom when new messages appear
         }
     }, [messages]);
