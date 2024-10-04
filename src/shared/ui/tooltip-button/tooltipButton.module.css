@@ -4,7 +4,20 @@
     border-radius: 2rem !important;
     max-height: 42px;
     color: var(--text) !important;
+    text-wrap: nowrap;
 }
 .button:hover {
     border-color: var(--border-color) !important;
+}
+
+@media (max-width: 806px) {
+    .button {
+        width: fit-content !important;
+        min-width: fit-content !important;
+    }
+}
+@media (max-width: 506px) {
+    .button {
+        font-size: 12px !important;
+    }
 }

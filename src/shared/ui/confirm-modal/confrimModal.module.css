@@ -48,3 +48,21 @@
 .actions > button:last-child {
     width: 45%;
 }
+
+@media (max-width: 548px) {
+    .wrapper {
+        width: 85vw;
+        left: 7.5vw;
+    }
+}
+@media (max-width: 506px) {
+    .header > h2 {
+        font-size: 16px;
+    }
+    .content > p {
+        font-size: 14px;
+    }
+    .actions > button {
+        font-size: 12px;
+    }
+}

@@ -24,3 +24,9 @@
 .error:hover {
     border-color: #880000 !important;
 }
+
+@media (max-width: 648px) {
+    .button > span {
+        display: none;
+    }
+}

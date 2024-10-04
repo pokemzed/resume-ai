@@ -28,3 +28,10 @@
         opacity: 1;
     }
 }
+
+@media (max-width: 506px) {
+    .chat {
+        width: 100%;
+        height: calc(100vh - 3rem);
+    }
+}

@@ -26,3 +26,33 @@
     opacity: 0;
     transition: 0.35s;
 }
+
+@media (max-width: 806px) {
+    .wrapper {
+        width: 100%;
+        padding: 1rem;
+        height: auto;
+    }
+}
+@media (max-width: 506px) {
+    .wrapper {
+        gap: 1rem;
+    }
+    .text {
+        gap: 0.5rem;
+    }
+    .text > h1 {
+        font-size: 24px;
+    }
+    .text > p {
+        font-size: 14px;
+    }
+}
+@media (max-width: 406px) {
+    .text > h1 {
+        font-size: 18px;
+    }
+    .text > p {
+        font-size: 12px;
+    }
+}

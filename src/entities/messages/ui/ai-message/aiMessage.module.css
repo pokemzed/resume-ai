@@ -34,3 +34,19 @@
 .loading {
     width: 10%;
 }
+
+@media (max-width: 506px) {
+    .message {
+        max-width: 100%;
+        font-size: 14px;
+    }
+    .loading {
+        width: 25%;
+    }
+    .icon {
+        max-width: 32px;
+        max-height: 32px;
+        padding: 0.45rem;
+        border-radius: 8px;
+    }
+}
