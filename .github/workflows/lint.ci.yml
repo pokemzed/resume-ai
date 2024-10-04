@@ -1,6 +1,10 @@
 name: Linting
 
 on:
+  workflow_run:
+    workflows: [ 'Deploy Vercel' ]
+    types:
+      - requested
   push:
     branches: [main]
   pull_request:
