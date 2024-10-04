@@ -1,15 +1,13 @@
 name: Deploy Vercel
 
 on:
-    push:
-        branches: [main]
-    pull_request:
-        branches: [main]
+    workflow_run:
+      workflows: ["Linting", "Formatted", "Building"]
+      types:
+        - completed
 jobs:
     deploy:
         runs-on: ubuntu-latest
-        needs: [prettier, lint, build]
-
         strategy:
             matrix:
                 node-version: [20]
