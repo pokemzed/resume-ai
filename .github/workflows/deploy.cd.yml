@@ -1,10 +1,10 @@
 name: Deploy Vercel
 
 on:
-    workflow_run:
-        workflows: ['Linting', 'Formatted', 'Building']
-        types:
-            - completed
+    push:
+      branches: [main]
+    pull_request:
+      branches: [main]
 jobs:
     deploy:
         if: ${{ success() }}
