@@ -17,7 +17,7 @@ export const StartScreen = () => {
     return (
         <main className={`${styles.wrapper} ${visible && styles.redirect}`}>
             <section className={styles.text}>
-                <h1>Резюме за считанные минуты 666</h1>
+                <h1>Резюме за считанные минуты 888</h1>
                 <p>Создайте своё уникальное резюме в одно мгновение</p>
             </section>
             <ChatField otherFunction={() => setVisible(true)} tooltips />

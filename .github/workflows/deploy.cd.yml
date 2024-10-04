@@ -10,6 +10,10 @@ jobs:
         if: ${{ success() }}
         runs-on: ubuntu-latest
         strategy:
+
+
+
+
             matrix:
                 node-version: [20]
         steps:
@@ -25,6 +29,14 @@ jobs:
                   cache: 'pnpm'
 
             - run: pnpm install
+
+
+
+
+
+
+
+
 
             - name: Deploy to Vercel
               run: npx vercel --prod
