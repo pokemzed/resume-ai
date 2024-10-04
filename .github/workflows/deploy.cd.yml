@@ -9,11 +9,19 @@ jobs:
     deploy:
         runs-on: ubuntu-latest
         needs: [prettier, lint, build]
+
+
+
+
         strategy:
             matrix:
                 node-version: [20]
         steps:
             - uses: actions/checkout@v4
+
+
+
+
             - uses: pnpm/action-setup@v4
               with:
                   version: 9.6.0
@@ -25,5 +33,7 @@ jobs:
 
             - name: Deploy to Vercel
               run: npx vercel --prod
+
+
               env:
                   VERCEL_TOKEN: ${{ secrets.VERCEL_SECRET }}
