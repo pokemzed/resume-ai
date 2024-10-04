@@ -1,20 +1,24 @@
 name: Linting
 
 on:
-  workflow_run:
-    workflows: [ 'Deploy Vercel' ]
-    types:
-      - requested
-  push:
-    branches: [main]
-  pull_request:
-    branches: [main]
+    push:
+        branches: [main]
+    pull_request:
+        branches: [main]
 jobs:
     lint:
         runs-on: ubuntu-latest
         strategy:
             matrix:
                 node-version: [20]
+
+
+
+
+
+
+
+
         steps:
             - uses: actions/checkout@v4
             - uses: pnpm/action-setup@v4

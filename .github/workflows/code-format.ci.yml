@@ -1,17 +1,22 @@
 name: Formatted
 
 on:
-  workflow_run:
-    workflows: [ 'Deploy Vercel' ]
-    types:
-      - requested
-  push:
-    branches: [main]
-  pull_request:
-    branches: [main]
+    push:
+        branches: [main]
+    pull_request:
+        branches: [main]
 jobs:
     prettier:
         runs-on: ubuntu-latest
+
+
+
+
+
+
+
+
+
         strategy:
             matrix:
                 node-version: [20]
