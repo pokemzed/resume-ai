@@ -2,9 +2,9 @@ name: Deploy Vercel
 
 on:
     workflow_run:
-      workflows: ["Linting", "Formatted", "Building"]
-      types:
-        - completed
+        workflows: ['Linting', 'Formatted', 'Building']
+        types:
+            - completed
 jobs:
     deploy:
         runs-on: ubuntu-latest
