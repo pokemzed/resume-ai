@@ -1,13 +1,14 @@
-name: Formatted
+name: Deploy Vercel
 
 on:
-    workflow_run:
-        workflows: ['Deploy Vercel']
-        types:
-            - requested
+    push:
+        branches: [main]
+    pull_request:
+        branches: [main]
 jobs:
-    prettier:
+    deploy:
         runs-on: ubuntu-latest
+        needs: [prettier, lint, build]
         strategy:
             matrix:
                 node-version: [20]
@@ -21,7 +22,8 @@ jobs:
               with:
                   node-version: ${{ matrix.node-version }}
                   cache: 'pnpm'
-            - name: Install dependencies
-              run: pnpm install -frozen-lockfile
-            - name: Run Prettier
-              run: pnpm run prettier
+
+            - name: Deploy to Vercel
+              run: npx vercel --prod
+              env:
+                  VERCEL_TOKEN: ${{ secrets.VERCEL_SECRET }}
