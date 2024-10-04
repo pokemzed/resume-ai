@@ -14,3 +14,11 @@
         overflow: auto;
     }
 }
+@media (max-width: 506px) {
+    .tooltips {
+        gap: 0.5rem;
+    }
+    .wrapper {
+        gap: 0.5rem;
+    }
+}
