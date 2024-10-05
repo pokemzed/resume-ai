@@ -2,6 +2,7 @@ import { Metadata } from 'next';
 import './globals.css';
 import { Providers } from '@/app/providers';
 import { Nunito_Sans } from 'next/font/google';
+import Head from 'next/head';
 
 const nunito = Nunito_Sans({ subsets: ['latin'] });
 
@@ -17,6 +18,12 @@ export default function RootLayout({
 }>) {
     return (
         <html lang="en">
+            <Head>
+                <meta
+                    name="viewport"
+                    content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no"
+                />
+            </Head>
             <body className={nunito.className}>
                 <Providers>{children}</Providers>
             </body>
