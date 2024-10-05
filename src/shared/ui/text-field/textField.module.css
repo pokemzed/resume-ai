@@ -3,8 +3,6 @@
 }
 .wrapper > textarea {
     width: 100%;
-    /*max-width: 100%;*/
-    min-width: 800px;
     padding: 1.25rem 3rem 1.25rem 1.5rem;
 
     border: 1px solid var(--background-secondary);
