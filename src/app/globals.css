@@ -16,8 +16,9 @@
 }
 html {
     background: var(--background);
+    height: 100%;
 }
 body {
-    max-height: 100dvh;
+    height: 100%;
     font-size: 16px;
 }

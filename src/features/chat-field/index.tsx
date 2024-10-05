@@ -30,9 +30,6 @@ export const ChatField = ({
         setFieldValue(e.target.value);
 
     const onSelectTooltip = (value: string) => {
-        if (fieldValue.length) {
-            return setFieldValue(fieldValue + ` ${value}`);
-        }
         setFieldValue(value);
     };
 
