@@ -29,10 +29,15 @@
     }
 }
 
+@media (max-width: 806px) {
+    .chat {
+        height: calc(100svh - 2rem);
+        max-height: 100svh;
+    }
+}
 @media (max-width: 506px) {
     .chat {
         width: 100%;
         max-height: 100vh;
-        height: calc(100vh - 3rem);
     }
 }
