@@ -33,15 +33,17 @@ export const ChatField = ({
         setFieldValue(value);
     };
 
-    // const onKeySendMessage = async (
-    //     e: React.KeyboardEvent<HTMLTextAreaElement>,
-    // ) => {
-    //     if (e.key === 'Enter' && !isLoading) {
-    //         if (fieldValue.length) {
-    //             await sendMessage();
-    //         }
-    //     }
-    // };
+    const onKeySendMessage = async (
+        e: React.KeyboardEvent<HTMLTextAreaElement>,
+    ) => {
+        if (e.key === 'Enter' && !e.shiftKey) {
+            await sendMessage();
+        }
+        // if (e.key === 'Enter' && !isLoading) {
+        //     if (fieldValue.length) {
+        //     }
+        // }
+    };
 
     const sendMessage = async () => {
         if (fieldValue.length) {
@@ -88,7 +90,7 @@ export const ChatField = ({
                 fieldValue={fieldValue}
                 onChangeFieldValue={onChangeFiledValue}
                 onClick={sendMessage}
-                // onKeyHandler={onKeySendMessage}
+                onKeyHandler={onKeySendMessage}
             />
             {tooltips && (
                 <div className={styles.tooltips}>
