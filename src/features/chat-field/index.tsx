@@ -12,6 +12,8 @@ import {
 import { useSendMessageMutation } from '@/app/api';
 import { getLoadingMessagesReducer } from '@/entities/messages/model/reducers';
 import { SYSTEM_PROMPT } from '@/entities/messages/model/lib/prompt';
+import { checkLimit } from '@/shared/lib/helpers/limit';
+import { toast } from '@/shared/lib/helpers/toast';
 
 export const ChatField = ({
     tooltips = false,
@@ -39,13 +41,15 @@ export const ChatField = ({
         if (e.key === 'Enter' && !e.shiftKey) {
             await sendMessage();
         }
-        // if (e.key === 'Enter' && !isLoading) {
-        //     if (fieldValue.length) {
-        //     }
-        // }
     };
 
     const sendMessage = async () => {
+        if (!checkLimit()) {
+            return toast(
+                'Превышен дневной лимит. Возвращатесь завтра',
+                'error',
+            );
+        }
         if (fieldValue.length) {
             const fieldObject: IMessage = {
                 role: 'user',
