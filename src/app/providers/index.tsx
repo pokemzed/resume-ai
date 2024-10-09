@@ -6,6 +6,7 @@ import { Provider } from 'react-redux';
 import { persistor, store } from './store';
 import { PersistGate } from 'redux-persist/integration/react';
 import { Toaster } from 'react-hot-toast';
+import styles from './index.module.css';
 
 export const Providers = ({ children }: { children: React.ReactNode }) => {
     return (
@@ -13,14 +14,7 @@ export const Providers = ({ children }: { children: React.ReactNode }) => {
             <PersistGate persistor={persistor} loading={null}>
                 <ThemeProvider theme={theme}>
                     <AppRouterCacheProvider>
-                        <Container
-                            sx={{
-                                // height: '100dvh',
-                                display: 'flex',
-                                alignItems: 'center',
-                                justifyContent: 'center',
-                            }}
-                        >
+                        <Container className={styles.container}>
                             {children}
                             <Toaster
                                 position="top-center"

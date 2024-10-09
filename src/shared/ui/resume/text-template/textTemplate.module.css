@@ -1,0 +1,15 @@
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+.wrapper > h2 {
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--text-secondary);
+}
+.wrapper > p {
+    font-size: 18px;
+    font-weight: 500;
+    color: var(--text);
+}

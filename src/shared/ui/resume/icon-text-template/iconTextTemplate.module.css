@@ -1,0 +1,10 @@
+.wrapper {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+.wrapper > p {
+    font-size: 18px;
+    font-weight: 500;
+    color: var(--text);
+}

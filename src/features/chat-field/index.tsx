@@ -39,6 +39,7 @@ export const ChatField = ({
         e: React.KeyboardEvent<HTMLTextAreaElement>,
     ) => {
         if (e.key === 'Enter' && !e.shiftKey) {
+            e.preventDefault();
             await sendMessage();
         }
     };
@@ -81,10 +82,8 @@ export const ChatField = ({
                 })
                 .catch((err) => console.log(err))
                 .finally(() => dispatch(messagesActions.setLoading(false)));
-
-            setFieldValue('');
         }
-        return;
+        setFieldValue('');
     };
 
     return (

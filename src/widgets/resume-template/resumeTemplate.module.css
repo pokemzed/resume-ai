@@ -1,0 +1,10 @@
+.wrapper {
+    width: calc(50% - 1.5rem);
+    height: 100%;
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius);
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}

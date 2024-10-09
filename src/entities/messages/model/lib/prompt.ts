@@ -21,3 +21,35 @@ export const SYSTEM_PROMPT = `
     4. Предложи пользователю использовать ключевые слова в разделе "О себе", если пользователь решил составить его. Ключевые слова дадут хорошую индексацию системой поиска сайта.
     И помни, резюме должно быть развернутым, описывающим подробно все преимущества. Используй четкую структуру с подзаголовками и заголовками.
 `;
+
+export const REPLACE_INFO_USER = `
+    Мне нужно, чтобы ты отсортировал сообщения и на основе ответов пользователя (user) составил объект вида:
+    {
+      "personalInformation": null | {
+        "name": string,
+        "location": string,
+      },
+      "contactInformation": null | {
+        "phone": string,
+        "email": string
+      },
+      "professionalGoals": null | string,
+      "experience": null | {
+          "company": string,
+          "position": string,
+          "period": string,
+          "responsibilities": string[]
+      }[],
+      "education": null |  {
+        "institution": null,
+        "degree": null
+        "years": null,
+      }[],
+      "skills": null | string[],
+      "achievements": null | string[],
+      "additionalInformation": null | string[],
+      "about": null | string
+    }
+    Если ты не нашел в сообщениях каких-то разделов, то оставляй в значении null. 
+    И, просьба, пришли мне только объект, без лишнего текста. Спасибо! Ты лучший!
+`;

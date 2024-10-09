@@ -1,7 +1,6 @@
 .chat {
-    width: 100%;
-    height: 100dvh;
-    padding: 4rem 0;
+    width: calc(75% - 1.5rem);
+    height: 100%;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -30,13 +29,13 @@
     }
 }
 
-@media (max-width: 806px) {
-    .chat {
-        padding: 2rem 0;
-    }
-}
-@media (max-width: 506px) {
-    .chat {
-        padding: 1.5rem 0;
-    }
-}
+/*@media (max-width: 806px) {*/
+/*    .chat {*/
+/*        padding: 2rem 0;*/
+/*    }*/
+/*}*/
+/*@media (max-width: 506px) {*/
+/*    .chat {*/
+/*        padding: 1.5rem 0;*/
+/*    }*/
+/*}*/

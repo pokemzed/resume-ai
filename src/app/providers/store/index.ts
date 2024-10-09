@@ -4,6 +4,7 @@ import storageSession from 'redux-persist/lib/storage/session';
 import { messagesReducer } from '@/entities/messages';
 import { IStateSchema } from '@/app/providers/store/types';
 import { chatApi } from '@/app/api/api-list/chatApi';
+import { userReducer } from '@/entities/resume';
 
 const messagesPersistConfig = {
     key: 'root',
@@ -18,6 +19,7 @@ const messagesPersistedReducer = persistReducer(
 export const store = configureStore<IStateSchema>({
     reducer: {
         messages: messagesPersistedReducer,
+        user: userReducer,
         [chatApi.reducerPath]: chatApi.reducer,
     },
     // eslint-disable-next-line @typescript-eslint/ban-ts-comment

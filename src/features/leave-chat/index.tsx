@@ -6,13 +6,17 @@ import { messagesActions } from '@/entities/messages';
 import { useRouter } from 'next/navigation';
 import { ConfirmModal } from '@/shared/ui/confirm-modal';
 import { useCallback, useState } from 'react';
+import { userActions } from '@/entities/resume';
 
 export const LeaveChat = () => {
     const [toggleConfirmModal, setToggleConfirmModal] =
         useState<boolean>(false);
     const dispatch = useAppDispatch();
     const router = useRouter();
-    const handleClearHistory = () => dispatch(messagesActions.clearHistory());
+    const handleClearHistory = () => {
+        dispatch(messagesActions.clearHistory());
+        dispatch(userActions.setUserInfo(null));
+    };
 
     const onCloseConfirmModal = useCallback(
         () => setToggleConfirmModal(false),
