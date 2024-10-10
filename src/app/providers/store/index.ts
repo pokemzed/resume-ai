@@ -1,25 +1,17 @@
-import { configureStore } from '@reduxjs/toolkit';
-import { persistReducer, persistStore } from 'redux-persist';
-import storageSession from 'redux-persist/lib/storage/session';
-import { messagesReducer } from '@/entities/messages';
+import { combineReducers, configureStore } from '@reduxjs/toolkit';
+import { persistStore } from 'redux-persist';
 import { IStateSchema } from '@/app/providers/store/types';
 import { chatApi } from '@/app/api/api-list/chatApi';
+import { messagesPersistedReducer, userPersistedReducer } from './persist';
 
-const messagesPersistConfig = {
-    key: 'root',
-    storage: storageSession,
-};
-
-const messagesPersistedReducer = persistReducer(
-    messagesPersistConfig,
-    messagesReducer,
-);
+const rootReducer = combineReducers({
+    messages: messagesPersistedReducer,
+    user: userPersistedReducer,
+    [chatApi.reducerPath]: chatApi.reducer,
+});
 
 export const store = configureStore<IStateSchema>({
-    reducer: {
-        messages: messagesPersistedReducer,
-        [chatApi.reducerPath]: chatApi.reducer,
-    },
+    reducer: rootReducer,
     // eslint-disable-next-line @typescript-eslint/ban-ts-comment
     // @ts-expect-error
     middleware: (getDefaultMiddleware) =>

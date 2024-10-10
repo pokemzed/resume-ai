@@ -11,6 +11,7 @@ export const AiMessage = ({
         typeof message === 'string' &&
         message
             .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
+            .replace(/### (.+)/g, '<strong>$1</strong>')
             .replace(/---/g, '<hr />')
             .replace(/\n/g, '<br />');
     return (

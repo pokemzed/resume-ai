@@ -1,0 +1,25 @@
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+.card {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 0.15rem;
+    border-radius: var(--border-radius);
+    border: 1px solid var(--border-color);
+    padding: 1rem;
+}
+.card > h4 {
+    color: var(--text);
+}
+.card > p {
+    font-size: 14px;
+    color: var(--text);
+}
+.card > span {
+    font-size: 14px;
+    color: var(--text-secondary);
+}

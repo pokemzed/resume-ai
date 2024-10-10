@@ -1,0 +1,9 @@
+.container {
+    width: 100dvw !important;
+    height: 100dvh !important;
+    max-width: 100dvw !important;
+    padding: 3rem !important;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
