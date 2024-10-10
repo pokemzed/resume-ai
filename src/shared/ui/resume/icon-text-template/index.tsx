@@ -5,6 +5,7 @@ interface IProps {
 }
 export const IconTextTemplate = (props: IProps) => {
     const { icon, text } = props;
+    if (text === null) return;
     return (
         <div className={styles.wrapper}>
             {icon}

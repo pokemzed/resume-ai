@@ -5,6 +5,6 @@ import { IUser } from '@/entities/resume';
 
 export interface IStateSchema {
     messages: IMessages & PersistPartial;
-    user: IUser;
+    user: IUser & PersistPartial;
     [chatApi.reducerPath]: ReturnType<typeof chatApi.reducer>;
 }

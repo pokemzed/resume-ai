@@ -33,11 +33,11 @@ export const chatApi = createApi({
                 body: {
                     model: 'gpt-4o-mini',
                     messages: [
+                        ...messages,
                         {
                             role: 'user',
                             content: REPLACE_INFO_USER,
                         },
-                        ...messages,
                     ],
                 },
             }),

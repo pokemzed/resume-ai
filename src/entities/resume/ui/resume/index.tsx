@@ -1,7 +1,6 @@
 'use client';
 import styles from './resume.module.css';
-import { useAppDispatch, useAppSelector } from '@/app/providers/store';
-import { getMessagesReducer } from '@/entities/messages';
+import { useAppSelector } from '@/app/providers/store';
 import { PersonalInformation } from '../personal-information';
 import { ContactInformation } from '../contact-information';
 import { ProfessionalGoals } from '../professional-goals';
@@ -11,33 +10,14 @@ import { ProfessionalSkills } from '../professional-skills';
 import { Progress } from '../progress';
 import { AdditionalInformation } from '../additional-information';
 import { useEffect, useRef } from 'react';
-import { useGetInfoUserMutation } from '@/app/api';
-import { IUserInfo, userActions } from '@/entities/resume';
-import { getUserInfo } from '@/entities/resume/model/reducers';
+import { getUserInfo, getUserIsLoading } from '../../model/reducers';
 import { Loader } from '@/shared/ui/loader';
+import { About } from '@/entities/resume/ui/about';
 
 export const Resume = () => {
-    const dispatch = useAppDispatch();
-    const messages = useAppSelector(getMessagesReducer);
     const userInfo = useAppSelector(getUserInfo);
-    const [getInfoUser, { isLoading }] = useGetInfoUserMutation();
+    const isLoading = useAppSelector(getUserIsLoading);
     const ref = useRef<null | HTMLDivElement>(null);
-
-    useEffect(() => {
-        if (messages !== null) {
-            dispatch(userActions.setLoading(isLoading));
-            getInfoUser(messages)
-                .unwrap()
-                .then((res) => JSON.parse(res.choices[0].message.content))
-                .then((json: IUserInfo) => {
-                    if (json) {
-                        dispatch(userActions.setUserInfo(json));
-                    }
-                })
-                .catch((err) => console.log(err))
-                .finally(() => dispatch(userActions.setLoading(isLoading)));
-        }
-    }, [messages]);
 
     useEffect(() => {
         if (ref.current) {
@@ -48,13 +28,7 @@ export const Resume = () => {
     return (
         <div ref={ref} className={styles.wrapper}>
             <header className={styles.heaader}>
-                {messages === null && (
-                    <>
-                        <h2>Давайте сделаем?</h2>
-                        <p>Начните диалог, чтобы увидеть результат</p>
-                    </>
-                )}
-                {messages && <h2>Резюме</h2>}
+                <h2>Ваше резюме</h2>
             </header>
             <PersonalInformation />
             <ContactInformation />
@@ -64,7 +38,11 @@ export const Resume = () => {
             <ProfessionalSkills />
             <Progress />
             <AdditionalInformation />
-            {isLoading && <Loader />}
+            <About />
+            <div className={`${styles.loader} ${isLoading && styles.visible}`}>
+                <Loader />
+                <span>Форматируем под шаблон</span>
+            </div>
         </div>
     );
 };

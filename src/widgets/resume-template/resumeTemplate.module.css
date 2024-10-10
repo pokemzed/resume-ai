@@ -1,10 +1,21 @@
 .wrapper {
-    width: calc(50% - 1.5rem);
+    width: 0;
+    overflow: hidden;
+    opacity: 0;
+    padding: 0;
     height: 100%;
-    border: 1px solid var(--border-color);
     border-radius: var(--border-radius);
-    padding: 2rem;
     display: flex;
     flex-direction: column;
+    justify-content: space-between;
     gap: 1.5rem;
+    transition: all 0.5s;
+}
+
+.visible {
+    opacity: 1;
+    width: calc(50% - 1.5rem);
+    border: 1px solid var(--border-color);
+    padding: 2rem;
+    margin-left: 3rem;
 }

@@ -1,6 +1,7 @@
 import { IStateSchema } from '@/app/providers/store/types';
 
 export const getUserInfo = (state: IStateSchema) => state.user.userInfo;
+export const getUserIsLoading = (state: IStateSchema) => state.user.isLoading;
 
 export const getUserPersonalInfo = (state: IStateSchema) =>
     state.user.userInfo?.personalInformation;
