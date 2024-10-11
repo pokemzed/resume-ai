@@ -11,11 +11,12 @@ export const IconButton = ({
     buttonType = 'primary',
     ...props
 }: IProps) => {
+    console.log(props.className);
     return (
         <Button
             variant={'outlined'}
-            className={`${styles.button} ${styles[buttonType]} ${props.className}`}
             {...props}
+            className={`${styles.button} ${styles[buttonType]} ${props.className}`}
         >
             {children}
         </Button>

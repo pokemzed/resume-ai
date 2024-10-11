@@ -36,3 +36,20 @@
     height: 1.5rem;
     transition: var(--transition);
 }
+
+@media (max-width: 1664px) {
+    .text > h2 {
+        font-size: 12px;
+    }
+    .text > span {
+        font-size: 12px;
+    }
+}
+@media (max-width: 1192px) {
+    .progress {
+        height: 1rem;
+    }
+    .progress > .progressBar {
+        height: 1rem;
+    }
+}

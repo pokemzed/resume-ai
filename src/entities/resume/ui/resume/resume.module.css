@@ -42,6 +42,17 @@
     color: var(--border-color);
 }
 
+@media (max-width: 1400px) {
+    .wrapper > header > h2 {
+        font-size: 24px;
+    }
+}
+@media (max-width: 1192px) {
+    .wrapper > header {
+        display: none;
+    }
+}
+
 /*scroll*/
 .wrapper::-webkit-scrollbar {
     width: 0.5rem;
@@ -60,4 +71,13 @@
 }
 .wrapper::-webkit-scrollbar-thumb:active {
     cursor: grabbing;
+}
+
+@media (max-width: 1192px) {
+    .wrapper::-webkit-scrollbar-track {
+        background-color: var(--background);
+    }
+    .wrapper::-webkit-scrollbar-thumb {
+        background-color: var(--border-color);
+    }
 }

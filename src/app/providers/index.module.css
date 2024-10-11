@@ -7,3 +7,9 @@
     align-items: center;
     justify-content: center;
 }
+
+@media (max-width: 1258px) {
+    .container {
+        padding: 1.5rem !important;
+    }
+}

@@ -1,16 +1,19 @@
+.overlay {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
 .wrapper {
-    position: absolute;
-    left: calc(50% - 262px);
     width: 524px;
-    top: 35%;
+    overflow: hidden;
+    margin-bottom: 3rem;
     background-color: var(--background-secondary);
     border-radius: var(--border-radius);
 }
 .header {
     display: flex;
     align-items: center;
-    justify-content: flex-end;
-    flex-wrap: nowrap;
+    justify-content: space-between;
     gap: 1rem;
     padding: 0.5rem 1rem;
     border-bottom: 1px solid var(--background-secondary);
@@ -23,7 +26,6 @@
     color: var(--text);
 }
 .header > h2 {
-    width: 100%;
     color: var(--text);
     font-size: 18px;
 }
@@ -31,24 +33,11 @@
 .content {
     width: 100%;
     display: flex;
+    overflow: auto;
+    max-height: 548px;
     flex-direction: column;
     gap: 1.5rem;
-    padding: 1rem;
-}
-.content > p {
-    color: var(--text-secondary);
-}
-.actions {
-    width: 100%;
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-}
-.actions > button {
-    width: 100%;
-}
-.actions > button:last-child {
-    width: 45%;
+    padding: 1rem 1.5rem;
 }
 
 @media (max-width: 548px) {
@@ -60,11 +49,5 @@
 @media (max-width: 506px) {
     .header > h2 {
         font-size: 16px;
-    }
-    .content > p {
-        font-size: 14px;
-    }
-    .actions > button {
-        font-size: 12px;
     }
 }

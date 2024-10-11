@@ -13,3 +13,23 @@
     font-weight: 500;
     color: var(--text);
 }
+
+@media (max-width: 1664px) {
+    .wrapper > h2 {
+        font-size: 12px;
+    }
+    .wrapper > p {
+        font-size: 16px;
+    }
+    .wrapper > ul > li {
+        font-size: 16px;
+    }
+}
+@media (max-width: 1664px) {
+    .wrapper > p {
+        font-size: 14px;
+    }
+    .wrapper > ul > li {
+        font-size: 14px;
+    }
+}

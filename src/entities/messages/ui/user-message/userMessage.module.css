@@ -23,7 +23,7 @@
     word-break: break-word;
 }
 
-@media (max-width: 506px) {
+@media (max-width: 806px) {
     .message {
         max-width: 100%;
         font-size: 14px;

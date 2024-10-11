@@ -30,6 +30,17 @@
     }
 }
 
+@media (max-width: 1400px) {
+    .chat {
+        width: calc(75% - 1.5rem);
+    }
+}
+@media (max-width: 1192px) {
+    .chat {
+        width: 100%;
+    }
+}
+
 /*@media (max-width: 806px) {*/
 /*    .chat {*/
 /*        padding: 2rem 0;*/
