@@ -13,12 +13,16 @@ export const StartScreen = () => {
     const dispatch = useAppDispatch();
 
     useEffect(() => {
-        dispatch(messagesActions.clearHistory());
-        dispatch(userActions.setUserInfo(null));
         if (visible) {
             setTimeout(() => router.push('/chat'), 250);
         }
     }, [router, visible]);
+
+    // reset state
+    useEffect(() => {
+        dispatch(messagesActions.clearHistory());
+        dispatch(userActions.setUserInfo(null));
+    }, []);
 
     return (
         <main className={`${styles.wrapper} ${visible && styles.redirect}`}>

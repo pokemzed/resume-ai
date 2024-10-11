@@ -44,6 +44,7 @@
     .wrapper {
         width: 85vw;
         left: 7.5vw;
+        margin-bottom: 0;
     }
 }
 @media (max-width: 506px) {
