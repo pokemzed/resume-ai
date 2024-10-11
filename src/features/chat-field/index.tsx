@@ -9,11 +9,12 @@ import {
     IMessage,
     messagesActions,
 } from '@/entities/messages';
-import { useSendMessageMutation } from '@/app/api';
+import { useGetInfoUserMutation, useSendMessageMutation } from '@/app/api';
 import { getLoadingMessagesReducer } from '@/entities/messages/model/reducers';
 import { SYSTEM_PROMPT } from '@/entities/messages/model/lib/prompt';
 import { checkLimit } from '@/shared/lib/helpers/limit';
 import { toast } from '@/shared/lib/helpers/toast';
+import { userActions } from '@/entities/resume';
 
 export const ChatField = ({
     tooltips = false,
@@ -27,6 +28,7 @@ export const ChatField = ({
     const messages = useAppSelector(getMessagesReducer);
     const isLoading = useAppSelector(getLoadingMessagesReducer);
     const [sendMessageRequest] = useSendMessageMutation();
+    const [getInfoUser] = useGetInfoUserMutation();
 
     const onChangeFiledValue = (e: React.ChangeEvent<HTMLTextAreaElement>) =>
         setFieldValue(e.target.value);
@@ -39,6 +41,7 @@ export const ChatField = ({
         e: React.KeyboardEvent<HTMLTextAreaElement>,
     ) => {
         if (e.key === 'Enter' && !e.shiftKey) {
+            e.preventDefault();
             await sendMessage();
         }
     };
@@ -59,12 +62,13 @@ export const ChatField = ({
             // state actions
             dispatch(messagesActions.sendMessage(fieldObject));
             dispatch(messagesActions.setLoading(true));
+            dispatch(userActions.setLoading(true));
 
             if (otherFunction) {
                 otherFunction();
             }
 
-            // request
+            // requests
             sendMessageRequest(
                 messages
                     ? [...messages, fieldObject]
@@ -82,9 +86,22 @@ export const ChatField = ({
                 .catch((err) => console.log(err))
                 .finally(() => dispatch(messagesActions.setLoading(false)));
 
-            setFieldValue('');
+            getInfoUser(
+                messages
+                    ? [...messages, fieldObject]
+                    : [{ role: 'system', content: SYSTEM_PROMPT }, fieldObject],
+            )
+                .unwrap()
+                .then((res) => JSON.parse(res.choices[0].message.content))
+                .then((data) => {
+                    if (data) {
+                        dispatch(userActions.setUserInfo(data));
+                    }
+                })
+                .catch((err) => console.log(err))
+                .finally(() => dispatch(userActions.setLoading(false)));
         }
-        return;
+        setFieldValue('');
     };
 
     return (

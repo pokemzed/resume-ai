@@ -3,12 +3,18 @@ import styles from './startScreen.module.css';
 import { ChatField } from '@/features/chat-field';
 import { useRouter } from 'next/navigation';
 import { useEffect, useState } from 'react';
+import { useAppDispatch } from '@/app/providers/store';
+import { messagesActions } from '@/entities/messages';
+import { userActions } from '@/entities/resume';
 
 export const StartScreen = () => {
     const [visible, setVisible] = useState<boolean>(false);
     const router = useRouter();
+    const dispatch = useAppDispatch();
 
     useEffect(() => {
+        dispatch(messagesActions.clearHistory());
+        dispatch(userActions.setUserInfo(null));
         if (visible) {
             setTimeout(() => router.push('/chat'), 250);
         }

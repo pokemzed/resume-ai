@@ -1,0 +1,55 @@
+.wrapper {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+.text {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.text > h2 {
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--text-secondary);
+}
+.text > span {
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--text);
+}
+.progress {
+    position: relative;
+    width: 100%;
+    height: 1.5rem;
+    border-radius: 64px;
+    background: var(--background-secondary);
+}
+.progress > .progressBar {
+    position: absolute;
+    left: 0;
+    top: 0;
+    background: var(--primary);
+    border-radius: 64px;
+    height: 1.5rem;
+    transition: var(--transition);
+}
+
+@media (max-width: 1664px) {
+    .text > h2 {
+        font-size: 12px;
+    }
+    .text > span {
+        font-size: 12px;
+    }
+}
+@media (max-width: 1192px) {
+    .progress {
+        height: 1rem;
+    }
+    .progress > .progressBar {
+        height: 1rem;
+    }
+}

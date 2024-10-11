@@ -1,0 +1,5 @@
+.list > li {
+    font-size: 18px;
+    color: var(--text);
+    margin-bottom: 0.5rem;
+}

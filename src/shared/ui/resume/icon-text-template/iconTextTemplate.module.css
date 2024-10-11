@@ -1,0 +1,20 @@
+.wrapper {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+.wrapper > p {
+    font-size: 18px;
+    font-weight: 500;
+    color: var(--text);
+}
+@media (max-width: 1664px) {
+    .wrapper > p {
+        font-size: 16px;
+    }
+}
+@media (max-width: 1664px) {
+    .wrapper > p {
+        font-size: 14px;
+    }
+}

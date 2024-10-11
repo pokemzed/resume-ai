@@ -1,0 +1,15 @@
+.container {
+    width: 100dvw !important;
+    height: 100dvh !important;
+    max-width: 100dvw !important;
+    padding: 3rem !important;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+@media (max-width: 1258px) {
+    .container {
+        padding: 1.5rem !important;
+    }
+}

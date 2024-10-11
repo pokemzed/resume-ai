@@ -5,6 +5,7 @@ import { useAppDispatch } from '@/app/providers/store';
 import { messagesActions } from '@/entities/messages';
 import { useCallback, useState } from 'react';
 import { ConfirmModal } from '@/shared/ui/confirm-modal';
+import { userActions } from '@/entities/resume';
 
 export const ClearHistory = () => {
     const [toggleConfirmModal, setToggleConfirmModal] =
@@ -13,6 +14,7 @@ export const ClearHistory = () => {
 
     const handleClearHistory = () => {
         dispatch(messagesActions.clearHistory());
+        dispatch(userActions.setUserInfo(null));
         onCloseConfirmModal();
     };
 

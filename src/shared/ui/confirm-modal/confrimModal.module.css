@@ -9,7 +9,8 @@
 .header {
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: flex-end;
+    flex-wrap: nowrap;
     gap: 1rem;
     padding: 0.5rem 1rem;
     border-bottom: 1px solid var(--background-secondary);
@@ -22,6 +23,7 @@
     color: var(--text);
 }
 .header > h2 {
+    width: 100%;
     color: var(--text);
     font-size: 18px;
 }
