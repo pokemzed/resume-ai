@@ -1,5 +1,6 @@
 import styles from './aiMessage.module.css';
 import AiIcon from '@/shared/assets/ai.svg';
+import { CopyButton } from '@/shared/ui/copy-button';
 export const AiMessage = ({
     message,
     loading,
@@ -19,13 +20,21 @@ export const AiMessage = ({
             <div className={styles.icon}>
                 <AiIcon />
             </div>
-            <span className={`${styles.message} ${loading && styles.loading}`}>
+            <div className={`${styles.message} ${loading && styles.loading}`}>
                 {loading ? (
                     message
                 ) : (
-                    <div dangerouslySetInnerHTML={{ __html: formattedText }} />
+                    <>
+                        <div
+                            dangerouslySetInnerHTML={{ __html: formattedText }}
+                        />
+                        <CopyButton
+                            textToCopy={message as string}
+                            variant={'outlined'}
+                        />
+                    </>
                 )}
-            </span>
+            </div>
         </div>
     );
 };

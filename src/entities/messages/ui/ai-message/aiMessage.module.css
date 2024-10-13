@@ -20,8 +20,9 @@
     min-height: 32px;
     padding: 0.75rem 1rem;
     display: flex;
-    align-items: center;
-    justify-content: center;
+    align-items: flex-start;
+    gap: 1rem;
+    flex-direction: column;
     background-color: var(--background-secondary);
     border-radius: var(--border-radius);
     border: 1px solid var(--border-color);
@@ -30,19 +31,12 @@
     font-size: 16px;
     font-weight: 400;
 }
-
-.loading {
-    width: 10%;
-}
-
 @media (max-width: 806px) {
     .message {
         max-width: 100%;
         font-size: 14px;
     }
-    .loading {
-        width: 25%;
-    }
+
     .icon {
         max-width: 32px;
         max-height: 32px;

@@ -1,0 +1,14 @@
+.button {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--text-secondary) !important;
+    padding: 0.25rem 1rem !important;
+    border-radius: 32px !important;
+}
+
+@media (max-width: 806px) {
+    .button {
+        font-size: 12px !important;
+    }
+}
